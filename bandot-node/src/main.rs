@@ -9,17 +9,19 @@ mod cli;
 
 pub use substrate_cli::{VersionInfo, IntoExit, error};
 
-fn run() -> cli::error::Result<()> {
+fn main() {
 	let version = VersionInfo {
 		name: "Substrate Node",
 		commit: env!("VERGEN_SHA_SHORT"),
 		version: env!("CARGO_PKG_VERSION"),
 		executable_name: "bandot-node",
 		author: "bandot-org",
-		description: "bandot-node",
+		description: "bandot Node",
 		support_url: "support.anonymous.an",
 	};
-	cli::run(::std::env::args(), cli::Exit, version)
-}
 
-error_chain::quick_main!(run);
+	if let Err(e) = cli::run(::std::env::args(), cli::Exit, version) {
+		eprintln!("Fatal error: {}\n\n{:?}", e, e);
+		std::process::exit(1)
+	}
+}
