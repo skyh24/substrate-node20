@@ -82,7 +82,7 @@ decl_storage! {
     // mapping of allowances to accounts
     Allowance get(allowance): map (T::AccountId, T::AccountId) => T::TokenBalance;
     // stores the total deposit for a listing
-    // maps a listing hash with the total tokensface
+    // maps a listing hash with the total tokens face
     // TCR specific; not part of standard ERC20 interface
     LockedDeposits get(locked_deposits): map T::Hash => T::TokenBalance;
   }

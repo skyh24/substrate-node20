@@ -19,12 +19,18 @@ Install required tools:
 Build all native code:
 
 ```bash
-cargo build
+cargo build --release
 ```
 
 # Run
 
 You can start a development chain with:
+
+```bash
+./target/release/bandot-node --dev
+```
+
+or
 
 ```bash
 cargo run -- --dev
