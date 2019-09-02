@@ -9,9 +9,9 @@ cargo build --release
 
 echo "*** Clean chain data"
 
-./target/release/bandot-node purge-chain --dev -y
+./target/release/skystrate-node purge-chain --dev -y
 
 echo "*** Start a new chain"
 
-./target/release/bandot-node --dev
+./target/release/skystrate-node --dev
 

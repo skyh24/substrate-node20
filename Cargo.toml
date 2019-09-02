@@ -1,5 +1,5 @@
 [package]
-name = "bandot-node"
+name = "skystrate-node"
 version = "2.0.0"
 authors = ["Skyh"]
 build = "build.rs"
@@ -9,7 +9,7 @@ edition = "2018"
 panic = "unwind"
 
 [[bin]]
-name = "bandot-node"
+name = "skystrate-node"
 path = "src/main.rs"
 
 [dependencies]
@@ -57,7 +57,7 @@ grandpa-primitives = { package = "substrate-finality-grandpa-primitives", git = 
 # grandpa-primitives = { package = "substrate-finality-grandpa-primitives", path = "../core/finality-grandpa/primitives" }
 # substrate-client = {  path = "../core/client" }
 # basic-authorship = { package = "substrate-basic-authorship", path = "../core/basic-authorship" }
-bandot-node-runtime = { path = "runtime" }
+skystrate-node-runtime = { path = "runtime" }
 
 [build-dependencies]
 vergen = "3"

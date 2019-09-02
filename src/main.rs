@@ -15,10 +15,10 @@ fn main() {
 		name: "Substrate Node",
 		commit: env!("VERGEN_SHA_SHORT"),
 		version: env!("CARGO_PKG_VERSION"),
-		executable_name: "bandot-node",
-		author: "bandot-org",
-		description: "Bandot node",
-		support_url: "https://github.com/bandotorg/Bandot",
+		executable_name: "skystrate-node",
+		author: "substrate-org",
+		description: "Skystrate node",
+		support_url: "miao.cn",
 	};
 
 	if let Err(e) = cli::run(::std::env::args(), cli::Exit, version) {

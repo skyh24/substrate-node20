@@ -6,7 +6,7 @@ use substrate_client::LongestChain;
 use babe::{import_queue, start_babe, Config};
 use grandpa::{self, FinalityProofProvider as GrandpaFinalityProofProvider};
 use futures::prelude::*;
-use bandot_node_runtime::{self, GenesisConfig, opaque::Block, RuntimeApi, WASM_BINARY};
+use skystrate_node_runtime::{self, GenesisConfig, opaque::Block, RuntimeApi, WASM_BINARY};
 use substrate_service::{
 	error::{Error as ServiceError}, 
 	AbstractService, Configuration, ServiceBuilder
@@ -20,8 +20,8 @@ pub use substrate_executor::NativeExecutor;
 // Our native executor instance.
 native_executor_instance!(
 	pub Executor,
-	bandot_node_runtime::api::dispatch,
-	bandot_node_runtime::native_version
+	skystrate_node_runtime::api::dispatch,
+	skystrate_node_runtime::native_version
 );
 
 construct_simple_protocol! {
@@ -40,7 +40,7 @@ macro_rules! new_full_start {
 		let mut tasks_to_spawn = None;
 
 		let builder = substrate_service::ServiceBuilder::new_full::<
-			bandot_node_runtime::opaque::Block, bandot_node_runtime::RuntimeApi, crate::service::Executor
+			skystrate_node_runtime::opaque::Block, skystrate_node_runtime::RuntimeApi, crate::service::Executor
 		>($config)?
 			.with_select_chain(|_config, backend| {
 				Ok(substrate_client::LongestChain::new(backend.clone()))
@@ -52,7 +52,7 @@ macro_rules! new_full_start {
 				let select_chain = select_chain.take()
 					.ok_or_else(|| substrate_service::Error::SelectChainRequired)?;
 				let (block_import, link_half) =
-					grandpa::block_import::<_, _, _, bandot_node_runtime::RuntimeApi, _, _>(
+					grandpa::block_import::<_, _, _, skystrate_node_runtime::RuntimeApi, _, _>(
 						client.clone(), client.clone(), select_chain
 					)?;
 				let justification_import = block_import.clone();

@@ -1,5 +1,5 @@
 [package]
-name = "bandot-node-runtime"
+name = "skystrate-node-runtime"
 version = "2.0.0"
 authors = ["Skyh"]
 edition = "2018"

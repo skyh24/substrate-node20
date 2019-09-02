@@ -1,5 +1,5 @@
 use primitives::{Pair, Public};
-use bandot_node_runtime::{
+use skystrate_node_runtime::{
 	AccountId, BabeConfig, BalancesConfig, GenesisConfig, GrandpaConfig,
 	SudoConfig, IndicesConfig, SystemConfig, WASM_BINARY, 
 };

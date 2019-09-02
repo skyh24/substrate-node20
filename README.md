@@ -1,4 +1,4 @@
-# bandot-node 2.0
+# skystrate-node 2.0
 
 A new SRML-based Substrate node, ready for hacking.
 
