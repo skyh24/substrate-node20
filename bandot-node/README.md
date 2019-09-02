@@ -1,4 +1,4 @@
-# bandot-node 2.0
+# bandot-node 1.0 for test
 
 A new SRML-based Substrate node, ready for hacking.
 

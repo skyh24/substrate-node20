@@ -4,25 +4,22 @@
 #![warn(unused_extern_crates)]
 
 mod chain_spec;
-#[macro_use]
 mod service;
 mod cli;
 
 pub use substrate_cli::{VersionInfo, IntoExit, error};
 
-fn main() {
+fn run() -> cli::error::Result<()> {
 	let version = VersionInfo {
 		name: "Substrate Node",
 		commit: env!("VERGEN_SHA_SHORT"),
 		version: env!("CARGO_PKG_VERSION"),
 		executable_name: "bandot-node",
 		author: "bandot-org",
-		description: "Bandot node",
-		support_url: "https://github.com/bandotorg/Bandot",
+		description: "bandot-node",
+		support_url: "support.anonymous.an",
 	};
-
-	if let Err(e) = cli::run(::std::env::args(), cli::Exit, version) {
-		eprintln!("Fatal error: {}\n\n{:?}", e, e);
-		std::process::exit(1)
-	}
+	cli::run(::std::env::args(), cli::Exit, version)
 }
+
+error_chain::quick_main!(run);

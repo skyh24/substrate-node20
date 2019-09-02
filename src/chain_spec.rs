@@ -1,7 +1,7 @@
 use primitives::{Pair, Public};
 use bandot_node_runtime::{
 	AccountId, BabeConfig, BalancesConfig, GenesisConfig, GrandpaConfig,
-	SudoConfig, IndicesConfig, SystemConfig, WASM_BINARY,
+	SudoConfig, IndicesConfig, SystemConfig, WASM_BINARY, 
 };
 use babe_primitives::{AuthorityId as BabeId};
 use grandpa_primitives::{AuthorityId as GrandpaId};
@@ -51,14 +51,14 @@ impl Alternative {
 				|| testnet_genesis(vec![
 					get_authority_keys_from_seed("Alice"),
 				],
-								   get_from_seed::<AccountId>("Alice"),
-								   vec![
-									   get_from_seed::<AccountId>("Alice"),
-									   get_from_seed::<AccountId>("Bob"),
-									   get_from_seed::<AccountId>("Alice//stash"),
-									   get_from_seed::<AccountId>("Bob//stash"),
-								   ],
-								   true),
+				get_from_seed::<AccountId>("Alice"),
+				vec![
+					get_from_seed::<AccountId>("Alice"),
+					get_from_seed::<AccountId>("Bob"),
+					get_from_seed::<AccountId>("Alice//stash"),
+					get_from_seed::<AccountId>("Bob//stash"),
+				],
+				true),
 				vec![],
 				None,
 				None,
@@ -71,23 +71,23 @@ impl Alternative {
 				|| testnet_genesis(vec![
 					get_authority_keys_from_seed("Alice"),
 					get_authority_keys_from_seed("Bob"),
+				], 
+				get_from_seed::<AccountId>("Alice"),
+				vec![
+					get_from_seed::<AccountId>("Alice"),
+					get_from_seed::<AccountId>("Bob"),
+					get_from_seed::<AccountId>("Charlie"),
+					get_from_seed::<AccountId>("Dave"),
+					get_from_seed::<AccountId>("Eve"),
+					get_from_seed::<AccountId>("Ferdie"),
+					get_from_seed::<AccountId>("Alice//stash"),
+					get_from_seed::<AccountId>("Bob//stash"),
+					get_from_seed::<AccountId>("Charlie//stash"),
+					get_from_seed::<AccountId>("Dave//stash"),
+					get_from_seed::<AccountId>("Eve//stash"),
+					get_from_seed::<AccountId>("Ferdie//stash"),
 				],
-								   get_from_seed::<AccountId>("Alice"),
-								   vec![
-									   get_from_seed::<AccountId>("Alice"),
-									   get_from_seed::<AccountId>("Bob"),
-									   get_from_seed::<AccountId>("Charlie"),
-									   get_from_seed::<AccountId>("Dave"),
-									   get_from_seed::<AccountId>("Eve"),
-									   get_from_seed::<AccountId>("Ferdie"),
-									   get_from_seed::<AccountId>("Alice//stash"),
-									   get_from_seed::<AccountId>("Bob//stash"),
-									   get_from_seed::<AccountId>("Charlie//stash"),
-									   get_from_seed::<AccountId>("Dave//stash"),
-									   get_from_seed::<AccountId>("Eve//stash"),
-									   get_from_seed::<AccountId>("Ferdie//stash"),
-								   ],
-								   true),
+				true),
 				vec![],
 				None,
 				None,
@@ -107,9 +107,9 @@ impl Alternative {
 }
 
 fn testnet_genesis(initial_authorities: Vec<(AccountId, AccountId, GrandpaId, BabeId)>,
-				   root_key: AccountId,
-				   endowed_accounts: Vec<AccountId>,
-				   _enable_println: bool) -> GenesisConfig {
+	root_key: AccountId, 
+	endowed_accounts: Vec<AccountId>,
+	_enable_println: bool) -> GenesisConfig {
 	GenesisConfig {
 		system: Some(SystemConfig {
 			code: WASM_BINARY.to_vec(),

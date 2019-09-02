@@ -61,8 +61,8 @@ pub type Hash = primitives::H256;
 /// Digest item type.
 pub type DigestItem = generic::DigestItem<Hash>;
 
-/// Used for the module template in `./token.rs`
-mod token;
+/// Used for the module template in `./template.rs`
+mod template;
 
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
 /// the specifics of the runtime. They can then be made to be agnostic over specific formats
@@ -252,11 +252,12 @@ impl sudo::Trait for Runtime {
 	type Proposal = Call;
 }
 
-/// Used for the module template in `./token.rs`
-impl token::Trait for Runtime {
+/// Used for the module template in `./template.rs`
+impl template::Trait for Runtime {
 	type Event = Event;
-	type TokenBalance = u128;
 }
+
+
 
 construct_runtime!(
 	pub enum Runtime where
@@ -271,8 +272,8 @@ construct_runtime!(
 		Indices: indices::{default, Config<T>},
 		Balances: balances,
 		Sudo: sudo,
-		// Used for the module template in `./token.rs`
-		Token: token::{Module, Call, Storage, Event<T>},
+		// Used for the module template in `./template.rs`
+		Template: template::{Module, Call, Storage, Event<T>},
 	}
 );
 
